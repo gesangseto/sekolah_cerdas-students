@@ -4,16 +4,14 @@ module.exports = function (app) {
 
     // Jadwal Kelas Route
     var student = require('./controller/student');
-    app.route('/siswa/ListSiswa')
+    app.route('/siswa/list_siswa')
         .get(student.ListSiswa);
-    app.route('/siswa/Search/:search')
+    app.route('/siswa/search/:search')
         .get(student.SearchSiswa);
-    app.route('/siswa/GetSiswa/Id/:siswa_id')
+    app.route('/siswa/get_siswa/:id')
         .get(student.getSiswaById);
-    app.route('/siswa/GetSiswa/KelasId/:kelas_id')
-        .get(student.getSiswaByKelasId);
-    app.route('/siswa/GetSiswa/KelasId/:kelas_id/SubKelasId/:sub_kelas_id')
-        .get(student.getSiswaByKelasAndSubKelasId);
+    app.route('/siswa/get_siswa')
+        .get(student.getSiswa);
     app.route('/siswa/getRecentRecord')
         .get(student.getRecentRecord);
     app.route('/siswa/getAppSiswa')
