@@ -15,6 +15,11 @@ var elapseTime = "";
 
 exports.ListSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     connection.query("SELECT session_id FROM `sch_settings` ;",
         function (error, result, fields) {
@@ -52,6 +57,11 @@ exports.ListSiswa = function (req, res) {
 };
 exports.SearchSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var search = req.params.search
     if (search != undefined) {
@@ -108,6 +118,11 @@ exports.SearchSiswa = function (req, res) {
 
 exports.getSiswaById = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var student_id = req.params.id;
     var sql = `SELECT student_session.transport_fees,students.vehroute_id,vehicle_routes.route_id,vehicle_routes.vehicle_id,transport_route.route_title,vehicles.vehicle_no,hostel_rooms.room_no,vehicles.driver_name,vehicles.driver_contact,hostel.id as hostel_id,hostel.hostel_name,room_types.id as room_type_id,room_types.room_type ,students.hostel_room_id,student_session.id as student_session_id,student_session.fees_discount,classes.id AS class_id,classes.class,sections.id AS section_id,sections.section,students.id AS student_id, students.admission_no , students.roll_no,students.admission_date,students.firstname,  students.lastname,students.image,    students.mobileno, students.email ,students.state ,students.app_key ,students.parent_app_key,   students.city , students.pincode , students.note, students.religion, students.cast, school_houses.house_name,   students.dob ,students.current_address, students.previous_school, students.guardian_is,students.parent_id,students.permanent_address,students.category_id,students.adhar_no,students.samagra_id,students.bank_account_no,students.bank_name, students.ifsc_code , students.guardian_name , students.father_pic ,students.height ,students.weight,students.measurement_date, students.mother_pic , students.guardian_pic , students.guardian_relation,students.guardian_phone,students.guardian_address,students.is_active ,students.created_at ,students.updated_at,students.father_name,students.father_phone,students.blood_group,students.school_house_id,students.father_occupation,students.mother_name,students.mother_phone,students.mother_occupation,students.guardian_occupation,students.gender,students.guardian_is,students.rte,students.guardian_email
@@ -143,6 +158,11 @@ exports.getSiswaById = function (req, res) {
 
 exports.getSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     connection.query("SELECT a.session_id AS session_id FROM `sch_settings` AS a;",
         function (error, result, fields) {
@@ -189,6 +209,11 @@ exports.getSiswa = function (req, res) {
 
 exports.getRecentRecord = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     connection.query("SELECT session_id FROM `sch_settings` ;",
         function (error, result, fields) {
@@ -226,6 +251,11 @@ exports.getRecentRecord = function (req, res) {
 };
 exports.getAppSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     connection.query("SELECT session_id FROM `sch_settings` ;",
         function (error, result, fields) {
@@ -264,6 +294,11 @@ exports.getAppSiswa = function (req, res) {
 
 exports.getDocSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var student_id = req.params.siswa_id;
     connection.query("SELECT session_id FROM `sch_settings` ;",
@@ -291,6 +326,11 @@ exports.getDocSiswa = function (req, res) {
 
 exports.deleteDocSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var id = req.body.doc_id;
     var student_id = req.body.siswa_id;
@@ -336,6 +376,11 @@ exports.deleteDocSiswa = function (req, res) {
 
 exports.InsertSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var body = req.body
     var values = []
@@ -365,6 +410,11 @@ exports.InsertSiswa = function (req, res) {
 
 exports.UpdateSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var body = req.body
     var values = []

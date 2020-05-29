@@ -15,8 +15,12 @@ var elapseTime = "";
 
 exports.InsertUpdateStudentSession = function (req, res) {
     perf.start();
-    var total = 0;
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
     console.log(req.body)
+
+    var total = 0;
     var student_id = req.body['student_id']
     var class_id = req.body['class_id']
     var section_id = req.body['section_id']

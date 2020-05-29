@@ -16,6 +16,11 @@ var elapseTime = "";
 
 exports.InsertSaudaraKandung = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var body = req.body
     var values = []
@@ -45,6 +50,11 @@ exports.InsertSaudaraKandung = function (req, res) {
 
 exports.UpdateSaudaraKandung = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var body = req.body
     var values = []
@@ -83,6 +93,11 @@ exports.UpdateSaudaraKandung = function (req, res) {
 
 exports.DeleteSaudaraKandung = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var body = req.body
     var values = []
@@ -121,6 +136,11 @@ exports.DeleteSaudaraKandung = function (req, res) {
 
 exports.GetSaudaraKandung = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var student_id = req.query['student_id']
     connection.query('SELECT b.id AS student_id, b.*,a.id AS id FROM student_sibling AS a JOIN students AS b ON a.sibling_student_id = b.id WHERE student_id =?', [student_id],

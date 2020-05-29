@@ -2,7 +2,7 @@
 
 module.exports = function (app) {
 
-    // Jadwal Kelas Route
+    // Students
     var student = require('./controller/student');
     app.route('/siswa/list_siswa')
         .get(student.ListSiswa);
@@ -20,7 +20,7 @@ module.exports = function (app) {
         .put(student.InsertSiswa);
     app.route('/siswa/')
 
-
+    // Student Sibling
     var student_sibling = require('./controller/student_sibling');
     app.route('/siswa/saudara_kandung')
         .get(student_sibling.GetSaudaraKandung);
@@ -31,7 +31,7 @@ module.exports = function (app) {
     app.route('/siswa/saudara_kandung')
         .delete(student_sibling.DeleteSaudaraKandung);
 
-
+    // Student Session
     var student_session = require('./controller/student_session');
     app.route('/siswa/student_session')
         .post(student_session.InsertUpdateStudentSession);
@@ -43,7 +43,7 @@ module.exports = function (app) {
     //     .delete(student_session.DeleteSaudaraKandung);
 
 
-
+    // Student Document
     var student_doc = require('./controller/student_doc');
     app.route('/siswa/student_doc')
         .get(student_doc.getDocSiswa);
@@ -51,11 +51,13 @@ module.exports = function (app) {
         .delete(student_doc.deleteDocSiswa);
 
 
-
+    // Student Library
     var student_library = require('./controller/student_library');
     app.route('/siswa/student_library')
         .post(student_library.searchLibraryStudent);
 
+
+    // Student ID Card
     var student_id_card = require('./controller/student_id_card');
     app.route('/siswa/student_id_card')
         .get(student_id_card.ListIdCard);
@@ -67,6 +69,4 @@ module.exports = function (app) {
         .post(student_id_card.UpdateIdCard);
     app.route('/siswa/student_id_card/:id')
         .delete(student_id_card.DeleteIdCard);
-
-
 };

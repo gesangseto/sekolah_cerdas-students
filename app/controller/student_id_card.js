@@ -15,6 +15,11 @@ var elapseTime = "";
 
 exports.ListIdCard = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var student_id = req.query.student_id;
     connection.query("SELECT session_id FROM `sch_settings` ;",
@@ -43,6 +48,11 @@ exports.ListIdCard = function (req, res) {
 
 exports.GetIdCardById = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var student_id = req.query.student_id;
     connection.query("SELECT session_id FROM `sch_settings` ;",
@@ -72,9 +82,13 @@ exports.GetIdCardById = function (req, res) {
 
 exports.InsertIdCard = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var body = req.body
-    console.log(body)
     var values = []
     var keys = []
     for (let value of Object.values(body)) {
@@ -103,6 +117,11 @@ exports.InsertIdCard = function (req, res) {
 
 exports.UpdateIdCard = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var body = req.body
     var values = []
@@ -142,6 +161,11 @@ exports.UpdateIdCard = function (req, res) {
 
 exports.DeleteIdCard = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var student_id = req.query.student_id;
     connection.query("SELECT session_id FROM `sch_settings` ;",

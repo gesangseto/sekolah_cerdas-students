@@ -15,6 +15,11 @@ var elapseTime = "";
 
 exports.searchLibraryStudent = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var student_id = req.query.student_id;
 
@@ -44,7 +49,6 @@ exports.searchLibraryStudent = function (req, res) {
             } if (req.body.section_id != undefined) {
                 sql = sql + ' AND student_session.section_id =' + req.body.section_id
             }
-            console.log(sql)
             connection.query(sql,
                 function (error, result, fields) {
                     if (error) {

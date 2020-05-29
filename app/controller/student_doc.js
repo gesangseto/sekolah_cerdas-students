@@ -15,6 +15,11 @@ var elapseTime = "";
 
 exports.getDocSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var student_id = req.query.student_id;
     connection.query("SELECT session_id FROM `sch_settings` ;",
@@ -42,6 +47,11 @@ exports.getDocSiswa = function (req, res) {
 
 exports.deleteDocSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var id = req.body.doc_id;
     var student_id = req.body.siswa_id;
@@ -90,9 +100,13 @@ exports.deleteDocSiswa = function (req, res) {
 
 exports.InsertDocSiswa = function (req, res) {
     perf.start();
+    console.log("date-time :" + new Date())
+    console.log("api-name : " + req.originalUrl)
+    console.log("body-sent : ")
+    console.log(req.body)
+
     var total = 0;
     var body = req.body
-    console.log(body)
     var values = []
     var keys = []
     for (let value of Object.values(body)) {
