@@ -66,4 +66,16 @@ module.exports = function (app) {
         .post(student_id_card.UpdateIdCard);
     app.route('/student/student_id_card/:id')
         .delete(student_id_card.DeleteIdCard);
+
+    // student_category
+    var student_category = require('./controller/student_category');
+    app.route('/student/student_category')
+        .get(student_category.GetStudentCategory);
+    app.route('/student/student_category')
+        .put(student_category.InsertStudentCategory);
+    app.route('/student/student_category')
+        .post(student_category.UpdateStudentCategory);
+    app.route('/student/student_category')
+        .delete(student_category.DeleteStudentCategory);
+
 };

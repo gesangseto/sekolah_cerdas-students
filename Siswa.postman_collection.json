@@ -623,6 +623,125 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Kategory siswa",
+			"item": [
+				{
+					"name": "List Kategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/student/student_category"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Kategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/student/student_category?search=Umum",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"student",
+								"student_category"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Umum"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Kategory By id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/student/student_category?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"student",
+								"student_category"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Kategory",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"Jalur Beasiswa 2020\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/student/student_category"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Kategory Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":7,\n    \"category\": \"Jalur Hukum 2020\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/student/student_category"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Kategory",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":7\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/student/student_category"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}

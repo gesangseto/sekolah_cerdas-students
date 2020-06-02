@@ -1,0 +1,1633 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Siswa",
+    "contact": {}
+  },
+  "host": "localhost:3000",
+  "basePath": "/student",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/student": {
+      "get": {
+        "summary": "List Siswa",
+        "tags": [
+          "Siswa"
+        ],
+        "operationId": "ListSiswa",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "Update Siswa",
+        "tags": [
+          "Siswa"
+        ],
+        "operationId": "UpdateSiswa",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateSiswaRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "Insert Siswa",
+        "tags": [
+          "Siswa"
+        ],
+        "operationId": "InsertSiswa",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InsertSiswaRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Siswa",
+        "tags": [
+          "Siswa"
+        ],
+        "operationId": "DeleteSiswa",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DeleteSiswaRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/getRecentRecord": {
+      "get": {
+        "summary": "Get 5 Recent Record",
+        "tags": [
+          "Siswa"
+        ],
+        "operationId": "Get5RecentRecord",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/student_doc": {
+      "get": {
+        "summary": "Get Doc Siswa",
+        "tags": [
+          "Document Siswa"
+        ],
+        "operationId": "GetDocSiswa",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Doc Siswa",
+        "tags": [
+          "Document Siswa"
+        ],
+        "operationId": "DeleteDocSiswa",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "doc_id",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "Update Siswa",
+        "tags": [
+          "Document Siswa"
+        ],
+        "operationId": "PostUpdateSiswa",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateSiswaRequest1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "Insert Doc Siswa",
+        "tags": [
+          "Document Siswa"
+        ],
+        "operationId": "InsertDocSiswa",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InsertDocSiswaRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/saudara_kandung": {
+      "get": {
+        "summary": "Get Saudara Kandung By StudentId",
+        "tags": [
+          "Saudara Kandung"
+        ],
+        "operationId": "GetSaudaraKandungByStudentId",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "Update Saudara Kandung",
+        "tags": [
+          "Saudara Kandung"
+        ],
+        "operationId": "UpdateSaudaraKandung",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateSaudaraKandungRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "Insert Saudara Kandung",
+        "tags": [
+          "Saudara Kandung"
+        ],
+        "operationId": "InsertSaudaraKandung",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InsertSaudaraKandungRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Saudara Kandung",
+        "tags": [
+          "Saudara Kandung"
+        ],
+        "operationId": "DeleteSaudaraKandung",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DeleteSaudaraKandungRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/student_session": {
+      "get": {
+        "summary": "List Student Session",
+        "tags": [
+          "Siswa Session"
+        ],
+        "operationId": "ListStudentSession",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "Insert Student Session",
+        "tags": [
+          "Siswa Session"
+        ],
+        "operationId": "InsertStudentSession",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InsertStudentSessionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "Update Student Session",
+        "tags": [
+          "Siswa Session"
+        ],
+        "operationId": "UpdateStudentSession",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateStudentSessionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Student Session",
+        "tags": [
+          "Siswa Session"
+        ],
+        "operationId": "DeleteStudentSession",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/student_library": {
+      "post": {
+        "summary": "Get Library Student By class_id and section_id",
+        "tags": [
+          "Library Siswa"
+        ],
+        "operationId": "GetLibraryStudentByclass_idandsection_id",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "class_id",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "section_id",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/student_id_card": {
+      "get": {
+        "summary": "List Id Card",
+        "tags": [
+          "Siswa Id Card"
+        ],
+        "operationId": "ListIdCard",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "Insert Id Card",
+        "tags": [
+          "Siswa Id Card"
+        ],
+        "operationId": "InsertIdCard",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/InsertIdCardRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "Update Id Card Copy",
+        "tags": [
+          "Siswa Id Card"
+        ],
+        "operationId": "UpdateIdCardCopy",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdateIdCardCopyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/student_id_card/2": {
+      "get": {
+        "summary": "Get Id Card By Id",
+        "tags": [
+          "Siswa Id Card"
+        ],
+        "operationId": "GetIdCardById",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "Get Id Card By Id Copy",
+        "tags": [
+          "Siswa Id Card"
+        ],
+        "operationId": "GetIdCardByIdCopy",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UpdateSiswaRequest": {
+      "title": "UpdateSiswaRequest",
+      "example": {
+        "id": 18,
+        "admission_no": "XXX -111",
+        "roll_no": "202020",
+        "admission_date": "2020-05-22",
+        "firstname": "Item",
+        "lastname": "Aji Seto",
+        "mobileno": "082122222657",
+        "email": "gesangseto@gmail.com",
+        "state": null,
+        "city": null,
+        "guardian_is": "father",
+        "pincode": null,
+        "religion": "Islam",
+        "previous_school": "",
+        "dob": "1990-05-03",
+        "current_address": "",
+        "permanent_address": "",
+        "image": "uploads/student_images/no_image.png",
+        "category_id": "3",
+        "adhar_no": "",
+        "samagra_id": "",
+        "father_name": "None",
+        "father_phone": "09999999999",
+        "father_occupation": "none",
+        "mother_name": "none",
+        "mother_phone": "09999999999",
+        "mother_occupation": "none",
+        "guardian_occupation": "none",
+        "guardian_email": "",
+        "gender": "Male",
+        "guardian_name": "None",
+        "guardian_relation": "Ayah",
+        "guardian_phone": "09999999999",
+        "guardian_address": "",
+        "blood_group": "",
+        "height": "170",
+        "weight": "149",
+        "note": "",
+        "is_active": "yes",
+        "measurement_date": "2020-05-20"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "admission_no": {
+          "type": "string"
+        },
+        "roll_no": {
+          "type": "string"
+        },
+        "admission_date": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "mobileno": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "guardian_is": {
+          "type": "string"
+        },
+        "pincode": {
+          "type": "string"
+        },
+        "religion": {
+          "type": "string"
+        },
+        "previous_school": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "current_address": {
+          "type": "string"
+        },
+        "permanent_address": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "category_id": {
+          "type": "string"
+        },
+        "adhar_no": {
+          "type": "string"
+        },
+        "samagra_id": {
+          "type": "string"
+        },
+        "father_name": {
+          "type": "string"
+        },
+        "father_phone": {
+          "type": "string"
+        },
+        "father_occupation": {
+          "type": "string"
+        },
+        "mother_name": {
+          "type": "string"
+        },
+        "mother_phone": {
+          "type": "string"
+        },
+        "mother_occupation": {
+          "type": "string"
+        },
+        "guardian_occupation": {
+          "type": "string"
+        },
+        "guardian_email": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "guardian_name": {
+          "type": "string"
+        },
+        "guardian_relation": {
+          "type": "string"
+        },
+        "guardian_phone": {
+          "type": "string"
+        },
+        "guardian_address": {
+          "type": "string"
+        },
+        "blood_group": {
+          "type": "string"
+        },
+        "height": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "string"
+        },
+        "measurement_date": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "admission_no",
+        "roll_no",
+        "admission_date",
+        "firstname",
+        "lastname",
+        "mobileno",
+        "email",
+        "state",
+        "city",
+        "guardian_is",
+        "pincode",
+        "religion",
+        "previous_school",
+        "dob",
+        "current_address",
+        "permanent_address",
+        "image",
+        "category_id",
+        "adhar_no",
+        "samagra_id",
+        "father_name",
+        "father_phone",
+        "father_occupation",
+        "mother_name",
+        "mother_phone",
+        "mother_occupation",
+        "guardian_occupation",
+        "guardian_email",
+        "gender",
+        "guardian_name",
+        "guardian_relation",
+        "guardian_phone",
+        "guardian_address",
+        "blood_group",
+        "height",
+        "weight",
+        "note",
+        "is_active",
+        "measurement_date"
+      ]
+    },
+    "InsertSiswaRequest": {
+      "title": "InsertSiswaRequest",
+      "example": {
+        "admission_no": "XXX -111",
+        "roll_no": "202020",
+        "admission_date": "2020-05-22",
+        "firstname": "Jingga",
+        "lastname": "Aji Seto",
+        "mobileno": "082122222657",
+        "email": "gesangseto@gmail.com",
+        "state": null,
+        "city": null,
+        "guardian_is": "father",
+        "pincode": null,
+        "religion": "Islam",
+        "previous_school": "",
+        "dob": "1990-05-03",
+        "current_address": "",
+        "permanent_address": "",
+        "image": "uploads/student_images/no_image.png",
+        "category_id": "3",
+        "adhar_no": "",
+        "samagra_id": "",
+        "father_name": "None",
+        "father_phone": "09999999999",
+        "father_occupation": "none",
+        "mother_name": "none",
+        "mother_phone": "09999999999",
+        "mother_occupation": "none",
+        "guardian_occupation": "none",
+        "guardian_email": "",
+        "gender": "Male",
+        "guardian_name": "None",
+        "guardian_relation": "Ayah",
+        "guardian_phone": "09999999999",
+        "guardian_address": "",
+        "blood_group": "",
+        "height": "170",
+        "weight": "149",
+        "note": "",
+        "is_active": "yes",
+        "measurement_date": "2020-05-20"
+      },
+      "type": "object",
+      "properties": {
+        "admission_no": {
+          "type": "string"
+        },
+        "roll_no": {
+          "type": "string"
+        },
+        "admission_date": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "mobileno": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "guardian_is": {
+          "type": "string"
+        },
+        "pincode": {
+          "type": "string"
+        },
+        "religion": {
+          "type": "string"
+        },
+        "previous_school": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "current_address": {
+          "type": "string"
+        },
+        "permanent_address": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "category_id": {
+          "type": "string"
+        },
+        "adhar_no": {
+          "type": "string"
+        },
+        "samagra_id": {
+          "type": "string"
+        },
+        "father_name": {
+          "type": "string"
+        },
+        "father_phone": {
+          "type": "string"
+        },
+        "father_occupation": {
+          "type": "string"
+        },
+        "mother_name": {
+          "type": "string"
+        },
+        "mother_phone": {
+          "type": "string"
+        },
+        "mother_occupation": {
+          "type": "string"
+        },
+        "guardian_occupation": {
+          "type": "string"
+        },
+        "guardian_email": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "guardian_name": {
+          "type": "string"
+        },
+        "guardian_relation": {
+          "type": "string"
+        },
+        "guardian_phone": {
+          "type": "string"
+        },
+        "guardian_address": {
+          "type": "string"
+        },
+        "blood_group": {
+          "type": "string"
+        },
+        "height": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "string"
+        },
+        "measurement_date": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "admission_no",
+        "roll_no",
+        "admission_date",
+        "firstname",
+        "lastname",
+        "mobileno",
+        "email",
+        "state",
+        "city",
+        "guardian_is",
+        "pincode",
+        "religion",
+        "previous_school",
+        "dob",
+        "current_address",
+        "permanent_address",
+        "image",
+        "category_id",
+        "adhar_no",
+        "samagra_id",
+        "father_name",
+        "father_phone",
+        "father_occupation",
+        "mother_name",
+        "mother_phone",
+        "mother_occupation",
+        "guardian_occupation",
+        "guardian_email",
+        "gender",
+        "guardian_name",
+        "guardian_relation",
+        "guardian_phone",
+        "guardian_address",
+        "blood_group",
+        "height",
+        "weight",
+        "note",
+        "is_active",
+        "measurement_date"
+      ]
+    },
+    "DeleteSiswaRequest": {
+      "title": "DeleteSiswaRequest",
+      "example": {
+        "admission_no": "XXX -111",
+        "roll_no": "202020",
+        "admission_date": "2020-05-22",
+        "firstname": "Gesang",
+        "lastname": "Aji Seto",
+        "mobileno": "082122222657",
+        "email": "gesangseto@gmail.com",
+        "state": null,
+        "city": null,
+        "guardian_is": "father",
+        "pincode": null,
+        "religion": "Islam",
+        "previous_school": "",
+        "dob": "1990-05-03",
+        "current_address": "",
+        "permanent_address": "",
+        "image": "uploads/student_images/no_image.png",
+        "category_id": "3",
+        "adhar_no": "",
+        "samagra_id": "",
+        "father_name": "None",
+        "father_phone": "09999999999",
+        "father_occupation": "none",
+        "mother_name": "none",
+        "mother_phone": "09999999999",
+        "mother_occupation": "none",
+        "guardian_occupation": "none",
+        "guardian_email": "",
+        "gender": "Male",
+        "guardian_name": "None",
+        "guardian_relation": "Ayah",
+        "guardian_phone": "09999999999",
+        "guardian_address": "",
+        "blood_group": "",
+        "height": "170",
+        "weight": "149",
+        "note": "",
+        "is_active": "yes",
+        "measurement_date": "2020-05-20"
+      },
+      "type": "object",
+      "properties": {
+        "admission_no": {
+          "type": "string"
+        },
+        "roll_no": {
+          "type": "string"
+        },
+        "admission_date": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "mobileno": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "guardian_is": {
+          "type": "string"
+        },
+        "pincode": {
+          "type": "string"
+        },
+        "religion": {
+          "type": "string"
+        },
+        "previous_school": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "current_address": {
+          "type": "string"
+        },
+        "permanent_address": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "category_id": {
+          "type": "string"
+        },
+        "adhar_no": {
+          "type": "string"
+        },
+        "samagra_id": {
+          "type": "string"
+        },
+        "father_name": {
+          "type": "string"
+        },
+        "father_phone": {
+          "type": "string"
+        },
+        "father_occupation": {
+          "type": "string"
+        },
+        "mother_name": {
+          "type": "string"
+        },
+        "mother_phone": {
+          "type": "string"
+        },
+        "mother_occupation": {
+          "type": "string"
+        },
+        "guardian_occupation": {
+          "type": "string"
+        },
+        "guardian_email": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "guardian_name": {
+          "type": "string"
+        },
+        "guardian_relation": {
+          "type": "string"
+        },
+        "guardian_phone": {
+          "type": "string"
+        },
+        "guardian_address": {
+          "type": "string"
+        },
+        "blood_group": {
+          "type": "string"
+        },
+        "height": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "string"
+        },
+        "measurement_date": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "admission_no",
+        "roll_no",
+        "admission_date",
+        "firstname",
+        "lastname",
+        "mobileno",
+        "email",
+        "state",
+        "city",
+        "guardian_is",
+        "pincode",
+        "religion",
+        "previous_school",
+        "dob",
+        "current_address",
+        "permanent_address",
+        "image",
+        "category_id",
+        "adhar_no",
+        "samagra_id",
+        "father_name",
+        "father_phone",
+        "father_occupation",
+        "mother_name",
+        "mother_phone",
+        "mother_occupation",
+        "guardian_occupation",
+        "guardian_email",
+        "gender",
+        "guardian_name",
+        "guardian_relation",
+        "guardian_phone",
+        "guardian_address",
+        "blood_group",
+        "height",
+        "weight",
+        "note",
+        "is_active",
+        "measurement_date"
+      ]
+    },
+    "UpdateSiswaRequest1": {
+      "title": "UpdateSiswaRequest1",
+      "example": {
+        "student_id": "0",
+        "title": "202020",
+        "doc": "uploads/student_images/no_image.png"
+      },
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "doc": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "student_id",
+        "title",
+        "doc"
+      ]
+    },
+    "InsertDocSiswaRequest": {
+      "title": "InsertDocSiswaRequest",
+      "example": {
+        "student_id": "0",
+        "title": "202020",
+        "doc": "uploads/student_images/no_image.png"
+      },
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "doc": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "student_id",
+        "title",
+        "doc"
+      ]
+    },
+    "UpdateSaudaraKandungRequest": {
+      "title": "UpdateSaudaraKandungRequest",
+      "example": {
+        "id": "1",
+        "student_id": "1",
+        "sibling_student_id": "3"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "student_id": {
+          "type": "string"
+        },
+        "sibling_student_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "student_id",
+        "sibling_student_id"
+      ]
+    },
+    "InsertSaudaraKandungRequest": {
+      "title": "InsertSaudaraKandungRequest",
+      "example": {
+        "student_id": "1",
+        "sibling_student_id": "2"
+      },
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "sibling_student_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "student_id",
+        "sibling_student_id"
+      ]
+    },
+    "DeleteSaudaraKandungRequest": {
+      "title": "DeleteSaudaraKandungRequest",
+      "example": {
+        "id": "1"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "InsertStudentSessionRequest": {
+      "title": "InsertStudentSessionRequest",
+      "example": {
+        "student_id": "12",
+        "class_id": "78",
+        "section_id": "1",
+        "session_id": "1",
+        "fees_discount": "0"
+      },
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "class_id": {
+          "type": "string"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "fees_discount": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "student_id",
+        "class_id",
+        "section_id",
+        "session_id",
+        "fees_discount"
+      ]
+    },
+    "UpdateStudentSessionRequest": {
+      "title": "UpdateStudentSessionRequest",
+      "example": {
+        "id": 1,
+        "student_id": "1",
+        "class_id": "78",
+        "section_id": "4",
+        "session_id": "14",
+        "fees_discount": "0"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "student_id": {
+          "type": "string"
+        },
+        "class_id": {
+          "type": "string"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "fees_discount": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "student_id",
+        "class_id",
+        "section_id",
+        "session_id",
+        "fees_discount"
+      ]
+    },
+    "InsertIdCardRequest": {
+      "title": "InsertIdCardRequest",
+      "example": {
+        "title": "title",
+        "school_name": "school_name",
+        "school_address": "address",
+        "header_color": "header_color",
+        "enable_admission_no": "admission_no",
+        "enable_student_name": "studentname",
+        "enable_class": "class",
+        "enable_fathers_name": "fathername",
+        "enable_mothers_name": "mothername",
+        "enable_address": "address",
+        "enable_phone": "phone",
+        "enable_dob": "dob",
+        "enable_blood_group": "bloodgroup",
+        "status": "1"
+      },
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "school_name": {
+          "type": "string"
+        },
+        "school_address": {
+          "type": "string"
+        },
+        "header_color": {
+          "type": "string"
+        },
+        "enable_admission_no": {
+          "type": "string"
+        },
+        "enable_student_name": {
+          "type": "string"
+        },
+        "enable_class": {
+          "type": "string"
+        },
+        "enable_fathers_name": {
+          "type": "string"
+        },
+        "enable_mothers_name": {
+          "type": "string"
+        },
+        "enable_address": {
+          "type": "string"
+        },
+        "enable_phone": {
+          "type": "string"
+        },
+        "enable_dob": {
+          "type": "string"
+        },
+        "enable_blood_group": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "school_name",
+        "school_address",
+        "header_color",
+        "enable_admission_no",
+        "enable_student_name",
+        "enable_class",
+        "enable_fathers_name",
+        "enable_mothers_name",
+        "enable_address",
+        "enable_phone",
+        "enable_dob",
+        "enable_blood_group",
+        "status"
+      ]
+    },
+    "UpdateIdCardCopyRequest": {
+      "title": "UpdateIdCardCopyRequest",
+      "example": {
+        "id": "2",
+        "title": "Gesang Aji Seto",
+        "school_name": "school_name",
+        "school_address": "address",
+        "header_color": "header_color",
+        "enable_admission_no": "admission_no",
+        "enable_student_name": "studentname",
+        "enable_class": "class",
+        "enable_fathers_name": "fathername",
+        "enable_mothers_name": "mothername",
+        "enable_address": "address",
+        "enable_phone": "phone",
+        "enable_dob": "dob",
+        "enable_blood_group": "bloodgroup",
+        "status": "1"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "school_name": {
+          "type": "string"
+        },
+        "school_address": {
+          "type": "string"
+        },
+        "header_color": {
+          "type": "string"
+        },
+        "enable_admission_no": {
+          "type": "string"
+        },
+        "enable_student_name": {
+          "type": "string"
+        },
+        "enable_class": {
+          "type": "string"
+        },
+        "enable_fathers_name": {
+          "type": "string"
+        },
+        "enable_mothers_name": {
+          "type": "string"
+        },
+        "enable_address": {
+          "type": "string"
+        },
+        "enable_phone": {
+          "type": "string"
+        },
+        "enable_dob": {
+          "type": "string"
+        },
+        "enable_blood_group": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "school_name",
+        "school_address",
+        "header_color",
+        "enable_admission_no",
+        "enable_student_name",
+        "enable_class",
+        "enable_fathers_name",
+        "enable_mothers_name",
+        "enable_address",
+        "enable_phone",
+        "enable_dob",
+        "enable_blood_group",
+        "status"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Siswa"
+    },
+    {
+      "name": "Document Siswa"
+    },
+    {
+      "name": "Saudara Kandung"
+    },
+    {
+      "name": "Siswa Session"
+    },
+    {
+      "name": "Library Siswa"
+    },
+    {
+      "name": "Siswa Id Card"
+    }
+  ]
+}
