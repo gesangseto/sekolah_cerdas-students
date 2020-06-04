@@ -3,7 +3,6 @@
 var response = require('../response');
 var connection = require('../connection');
 
-var crypto = require('crypto');
 
 const perf = require('execution-time')();
 var dateFormat = require('dateformat');
@@ -14,58 +13,6 @@ var status_code = "";
 var messages = "";
 var elapseTime = "";
 
-
-
-function MakePassword(length) {
-    return new Promise(resolve => {
-        var result = '';
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for (var i = 0; i < length; i++) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        resolve(result)
-    });
-}
-function InsertStudent(keys, values) {
-    return new Promise(resolve => {
-        var sql = `INSERT INTO students (` + keys + `) VALUES (` + values + `)`
-        connection.query(sql, function (error, rows, fields) {
-            if (error) {
-                console.log(error)
-                resolve("error")
-            } else {
-                resolve("success"); //Kembalian berupa kontak data
-            }
-        });
-    });
-}
-function InsertUserStudent(id, username_student, password) {
-    return new Promise(resolve => {
-        var sql = 'INSERT INTO `users`(`id`, `user_id`, `username`,`password`,`role`) SELECT MAX(id) + 1,?,?,?,"student" FROM users'
-        connection.query(sql, [id, username_student, password], function (error, rows, fields) {
-            if (error) {
-                console.log(error)
-                resolve("error")
-            } else {
-                resolve("success"); //Kembalian berupa kontak data
-            }
-        });
-    });
-}
-function InsertUserParent(id, username_parent, password) {
-    return new Promise(resolve => {
-        var sql = 'INSERT INTO `users`(`id`, `user_id`, `username`,`password`,`role`) SELECT MAX(id) + 1,?,?,?,"parent" FROM users'
-        connection.query(sql, [id, username_parent, password], function (error, rows, fields) {
-            if (error) {
-                console.log(error)
-                resolve("error")
-            } else {
-                resolve("success"); //Kembalian berupa kontak data
-            }
-        });
-    });
-}
 function SQL_QUERY(sql) {
     return new Promise(resolve => {
         connection.query(sql, function (error, rows, fields) {
@@ -78,21 +25,8 @@ function SQL_QUERY(sql) {
         });
     });
 }
-function GetStudentMaxId() {
-    return new Promise(resolve => {
-        var sql = `SELECT max(id) AS id FROM students`
-        connection.query(sql, function (error, rows, fields) {
-            if (error) {
-                console.log(error)
-                resolve("error")
-            } else {
-                resolve(rows); //Kembalian berupa kontak data
-            }
-        });
-    });
-}
 
-exports.GetStudent = function (req, res) {
+exports.Get = function (req, res) {
     perf.start();
     console.log("date-time :" + new Date())
     console.log("api-name : " + req.originalUrl)
@@ -100,15 +34,20 @@ exports.GetStudent = function (req, res) {
     console.log(req.body)
 
     var total = 0;
-    var sql = `SELECT * FROM students WHERE id IS NOT NULL`;
+    var sql = `SELECT a.* , b.id as student_id, b.id as parent_id,b.firstname,b.father_name,b.mother_name FROM users AS a
+        JOIN students AS b ON a.user_id=b.id
+        WHERE a.id IS NOT NULL`;
     if (req.query.search != undefined) {
         var search = req.query.search
-        sql = sql + ` AND (concat(firstname, ' ', lastname) LIKE "%` + search + `%" )
-        OR (admission_no LIKE "%`+ search + `%" ) OR (dob LIKE "%` + search + `%" ) OR (current_address LIKE "%` + search + `%" )
-        OR (father_name LIKE "%`+ search + `%" ) OR (mother_name LIKE "%` + search + `%" ) OR (mobileno LIKE "%` + search + `%" )`
+        sql = sql + ` AND (concat(b.firstname, ' ',b.lastname) LIKE "%` + search + `%" )
+        OR (b.admission_no LIKE "%`+ search + `%" ) OR (b.dob LIKE "%` + search + `%" )
+        OR (b.father_name LIKE "%`+ search + `%" ) OR (b.mother_name LIKE "%` + search + `%" ) `
+    }
+    if (req.query.student_id != undefined) {
+        sql = sql + ` AND a.user_id=` + req.query.student_id
     }
     if (req.query.id != undefined) {
-        sql = sql + ` AND id=` + req.query.id
+        sql = sql + ` AND a.id=` + req.query.id
     }
     connection.query(sql, function (error, result, fields) {
         if (error) {
@@ -127,35 +66,8 @@ exports.GetStudent = function (req, res) {
         }
     });
 };
-exports.getRecentRecord = function (req, res) {
-    perf.start();
-    console.log("date-time :" + new Date())
-    console.log("api-name : " + req.originalUrl)
-    console.log("body-sent : ")
-    console.log(req.body)
 
-    var total = 0;
-    var sql = `SELECT * FROM students ORDER BY id DESC LIMIT 5`;
-    connection.query(sql, function (error, result, fields) {
-        if (error) {
-            messages = "Internal server error";
-            elapseTime = perf.stop();
-            elapseTime = elapseTime.time.toFixed(2);
-            response.errorRes(elapseTime, messages, res);
-        } else {
-            result.forEach(element => {
-                total = total + 1;
-            })
-            messages = "Success";
-            elapseTime = perf.stop();
-            elapseTime = elapseTime.time.toFixed(2);
-            response.successGet(elapseTime, messages, total, result, res);
-        }
-    });
-};
-
-
-exports.InsertStudent = async function (req, res) {
+exports.Insert = async function (req, res) {
     perf.start();
     console.log("date-time :" + new Date())
     console.log("api-name : " + req.originalUrl)
@@ -176,8 +88,8 @@ exports.InsertStudent = async function (req, res) {
     id = (+id[0]['id']) + 1
     keys.push("id")
     values.push("'" + id + "'")
-    if (body.admission_no == undefined || body.firstname == undefined || body.father_name == undefined || body.mother_name == undefined) {
-        messages = "Failed Insert, all data must fill";
+    if (body.field_ini_ada_saat_insert_siswa == undefined || body.firstname == undefined || body.father_name == undefined || body.mother_name == undefined) {
+        messages = "Failed Insert, must insert from student";
         elapseTime = perf.stop();
         elapseTime = elapseTime.time.toFixed(2);
         response.successPost(elapseTime, messages, res);
@@ -193,14 +105,9 @@ exports.InsertStudent = async function (req, res) {
         } else {
             var insert_student = await InsertStudent(keys, values)
             if (insert_student == 'success') {
-                var password = await MakePassword(6)
-
-                password = crypto.createHash('md5').update(password).digest('hex');
-                // password = crypto.createHash('hash').update(password).digest('hex');
-                console.log(password); // 9b74c9897bac770ffc029102a200c5de
-
-                var username_student = 'std_' + id
-                var username_parent = 'parent_' + id
+                var password = await MakePassword(4)
+                var username_student = 'std_' + password
+                var username_parent = 'parent_' + password
                 var insert_user_student = await InsertUserStudent(id, username_student, password)
                 var insert_user_parent = await InsertUserParent(id, username_parent, password)
                 if (insert_user_parent != 'success' || insert_user_student != 'success') {
@@ -222,7 +129,7 @@ exports.InsertStudent = async function (req, res) {
 
 };
 
-exports.UpdateStudent = async function (req, res) {
+exports.Update = async function (req, res) {
     perf.start();
     console.log("date-time :" + new Date())
     console.log("api-name : " + req.originalUrl)
@@ -251,21 +158,21 @@ exports.UpdateStudent = async function (req, res) {
 
 
 
-    if (body.admission_no == undefined || body.firstname == undefined || body.father_name == undefined || body.mother_name == undefined || body.id == undefined) {
-        messages = "Failed Insert, all data must fill";
+    if (body.id == undefined) {
+        messages = "Failed Insert, id must fill";
         elapseTime = perf.stop();
         elapseTime = elapseTime.time.toFixed(2);
         response.successPost(elapseTime, messages, res);
     } else {
-        var sql_check_duplicate = `SELECT count(id) as count FROM students WHERE id!=` + body.id + ` AND admission_no="` + body.admission_no + `"`;
+        var sql_check_duplicate = `SELECT count(id) as count FROM user WHERE id!=` + body.id + ` AND username="` + body.username + `" AND password="` + body.password + `"`;
         var check_duplicate = await SQL_QUERY(sql_check_duplicate)
         if (check_duplicate[0]['count'] > 0) {
-            messages = "Failed Update, duplicate admission_no";
+            messages = "Failed Update, duplicate username and password";
             elapseTime = perf.stop();
             elapseTime = elapseTime.time.toFixed(2);
             response.successPost(elapseTime, messages, res);
         } else {
-            var sql = `UPDATE students SET ` + myJSON + ` WHERE id=` + body.id;
+            var sql = `UPDATE users SET ` + myJSON + ` WHERE id=` + body.id;
             var update = await SQL_QUERY(sql)
             if (update == "error") {
                 messages = "Internal server error";
@@ -282,7 +189,7 @@ exports.UpdateStudent = async function (req, res) {
     }
 };
 
-exports.DeleteStudent = function (req, res) {
+exports.Delete = function (req, res) {
     perf.start();
     console.log("date-time :" + new Date())
     console.log("api-name : " + req.originalUrl)

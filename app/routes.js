@@ -16,6 +16,17 @@ module.exports = function (app) {
     app.route('/student/student')
         .delete(student.DeleteStudent);
 
+    // Students
+    var user = require('./controller/user');
+    app.route('/student/user')
+        .get(user.Get);
+    app.route('/student/user')
+        .put(user.Insert);
+    app.route('/student/user')
+        .post(user.Update);
+    app.route('/student/user')
+        .delete(user.Delete);
+
 
     // Student Sibling
     var student_sibling = require('./controller/student_sibling');

@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dateformat": "^3.0.3",
     "dotenv": "^8.2.0",
     "execution-time": "^1.4.1",
